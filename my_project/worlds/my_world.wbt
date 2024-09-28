@@ -1,0 +1,66 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/adept/pioneer3/protos/Pioneer3dx.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.572405890161223 0.5744331416274358 -0.5851308082034071 2.0831683166331048
+  position -0.8359822487051936 0.3618256521404253 19.360446552124227
+}
+WoodenBox {
+  translation -0.77 -0.08 0.3
+  size 2 3 0.6
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+RectangleArena {
+  floorSize 12 8
+  floorTileSize 4 4
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+  wallThickness 0.05
+  wallHeight 0.8
+}
+Solid {
+  translation 3.5 0 0.001
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.2 0
+        }
+      }
+      geometry Plane {
+        size 1.5 1.5
+      }
+      castShadows FALSE
+    }
+  ]
+}
+DEF pioneer3 Pioneer3dx {
+  translation -4.54 0.02 0.0975
+  controller "my_controller"
+  supervisor TRUE
+  extensionSlot [
+    TouchSensor {
+      translation -0.04 0 0.1
+      boundingObject Box {
+        size 0.45 0.4 0.1
+      }
+      physics Physics {
+      }
+    }
+    GPS {
+    }
+  ]
+}
